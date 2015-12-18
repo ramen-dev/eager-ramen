@@ -9,10 +9,28 @@
   },
   "options": {
     "properties": {
-      "customerId": {
-        "title": "Customer ID",
-        "description": "Enter the ID provided to you by Photon Photos",
-        "type": "string"
+      "organization_id": {
+        "order": 1,
+        "title": "Ramen Organization ID",
+        "description": "Enter the Organization ID provided to you by Ramen",
+        "type": "string",
+        "placeholder": "1234567890ABCDEF"
+      },
+      "automaticUser": {
+        "order": 2,
+        "title": "Automatically detect logged in user information",
+        "description": "<strong>For developers:</strong> This works by iterating through all of the properties on the <code class=\"inline\">window</code> object, looking for any with an <code class=\"inline\">email</code> property <strong>and</strong> a <code class=\"inline\">id</code> property.So for example, this detection would work if you had the following somewhere in your app’s code:<pre><code>window.user = {\n  id: 'a1b2c3d4',\n  email: 'user@email.com'\n  name: 'First Last'\n  created: '2015-09-26T22:49:13.124Z'\n};</code></pre>Uncheck this option to manually specify which exposed property to use.",
+        "type": "boolean",
+        "default": true
+      },
+      "manuallySpecifiedUser": {
+        "order": 3,
+        "showIf": {
+          "automaticUser": false
+        },
+        "title": "Global JavaScript expression which evaluates to the logged in users",
+        "type": "string",
+        "placeholder": "window.ramenSettings"
       }
     }
   }
