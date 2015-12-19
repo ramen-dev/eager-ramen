@@ -2,22 +2,51 @@
 
   var options = INSTALL_OPTIONS;
   var isPreview = INSTALL_ID == "preview";
+  var preview_user;
+
 
   window.ramenSettings = window.ramenSettings || {};
-  window.ramenSettings.organization_id = "567370fa7765627985111a00";
+  window.ramenSettings.eager_options = options;
+  window.ramenSettings.organization_id = options.organization_id;
 
   if (isPreview) {
-    window.ramenSettings.user = {
-      id: "eager-preview-user",
-      email: "eager-preview-user@example.com",
-      name: "Eager Preview User"
-    };
+    if (!options.preview_question) {
+      window.ramenSettings.organization_id = "567370fa7765627985111a00";
 
-    if (!options.organization_id) {
-      window.ramenSettings.survey_id = "5673a44e7765626368ff0000";
+      if (!options.organization_id) {
+        window.ramenSettings.survey_id = "5673a44e7765626368ff0000";
+      } else {
+        window.ramenSettings.survey_id = "56738f9a7765624ca66e2200";
+      }
     } else {
-      window.ramenSettings.survey_id = "56738f9a7765624ca66e2200";
+      window.ramenSettings.survey_id = options.question_id;
     }
+
+    if (options.simulate_user &&
+      options.user_id &&
+      options.user_email &&
+      options.user_name) {
+
+      preview_user = {
+        id: options.user_id,
+        email: options.user_email,
+        name: options.user_name
+      };
+
+      if (options.timestamp && options.auth_hash) {
+        window.ramenSettings.timestamp = options.timestamp;
+        window.ramenSettings.auth_hash = options.auth_hash;
+      }
+    } else {
+      preview_user = {
+        id: "eager-preview-user",
+        email: "eager-preview-user@example.com",
+        name: "Eager Preview User"
+      };
+    }
+    
+    window.ramenSettings.user = preview_user;
+
   } else {
     if (options.automaticUser) {
       var emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
