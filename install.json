@@ -87,12 +87,14 @@
         "order": 11,
         "showIf": {"preview_question": true, "simulate_user": true},
         "title": "Secure Mode timestamp",
+        "description": "This is set automatically when you click on 'Preview Question' from inside Ramen. It is not required unless your Ramen Organization is already in Secure Mode.",
         "type": "integer"
       },
 
       "auth_hash": {
         "order": 12,
         "showIf": {"preview_question": true, "simulate_user": true},
+        "description": "This is set automatically when you click on 'Preview Question' from inside Ramen. It is not required unless your Ramen Organization is already in Secure Mode.",
         "title": "Secure Mode auth_hash",
         "type": "string"
       }
