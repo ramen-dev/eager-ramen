@@ -1,5 +1,8 @@
 # Eager Ramen Changelog
 
+## v1.2.0 Dec 20, 2015
+Add ability to customize the 'Bug' image
+
 ## v1.1.1 Dec 19, 2015
 Adding some description text to `auth_hash` and
 `timestamp` to hopefully make those options less

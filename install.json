@@ -19,7 +19,7 @@
       "automaticUser": {
         "order": 2,
         "title": "Automatically detect logged in user information",
-        "description": "<strong>For developers:</strong> This works by iterating through all of the properties on the <code class=\"inline\">window</code> object, looking for any with an <code class=\"inline\">email</code> property <strong>and</strong> a <code class=\"inline\">id</code> property.So for example, this detection would work if you had the following somewhere in your app’s code:<pre><code>window.user = {\n  id: 'a1b2c3d4',\n  email: 'user@email.com'\n  name: 'First Last'\n  created: '2015-09-26T22:49:13.124Z'\n};</code></pre>Uncheck this option to manually specify which exposed property to use.",
+        "description": "<strong>For developers:</strong> This works by iterating through all of the properties on the <code class=\"inline\">window</code> object, looking for any with an <code class=\"inline\">email</code> property <strong>and</strong> an <code class=\"inline\">id</code> property. So for example, this detection would work if you had the following somewhere in your app’s code:<pre><code>window.user = {\n  id: 'a1b2c3d4',\n  email: 'user@email.com'\n  name: 'First Last'\n  created: '2015-09-26T22:49:13.124Z'\n};</code></pre>Uncheck this option to manually specify which exposed property to use.",
         "type": "boolean",
         "default": true
       },
@@ -32,21 +32,37 @@
         "type": "string",
         "placeholder": "window.ramenSettings"
       },
+      "custom_bug_image": {
+        "order": 4,
+        "title": "Custom 'Bug' Image",
+        "description": "When a question appears, it'll be anchored by the green Ramen 'R'. If you'd like to use your own image (a feature which is available even on Ramen's free tier), check this box.",
+        "type": "boolean",
+        "default": false
+ 
+      },
+      "bug_image_url": {
+        "type": "string",
+        "order": 5,
+        "title": "Custom 'Bug' Image URL",
+        "description": "This image should be a PNG. It should have a square aspect ratio. It should be at least 64x64 pixels. The URL <strong>must</strong> be HTTPS, although the following input field will not force that, so we're trusting you. RamenJS will not fallback to it's default image if this image doesn't load, so it should be on a CDN like S3, Cloudfront, etc....",
+        "showIf": {"custom_bug_image": true},
+        "placeholder": "http://thecatapi.com/api/images/get?format=src"
+      },
       "preview_only_section": {
         "type": "help",
-        "order": 4,
+        "order": 6,
         "helpvalue": "<strong>Preview Only</strong><br>The options below are only for previewing. They do not affect how Eager will install Ramen into your application.<br><br><em>Important note regarding 'Secure Mode'</em>: As of this time, if you already have a Ramen account with 'Secure Mode' enabled, these previews will not work unless you clicked to it directly from inside Ramen. We are working to address this."
       },
       "preview_question": {
-        "order": 5,
+        "order": 7,
         "title": "Preview your own question",
-        "description": "If you have your own Ramen account, and you want to preview you own questions. Check this box. Your questions do not have to be published in order to be previewed here.",
+        "description": "If you have your own Ramen account, and you want to preview you own questions, check this box. Your questions do not have to be published in order to be previewed here.",
         "type": "boolean",
         "default": false
       },
 
       "question_id": {
-        "order": 6,
+        "order": 8,
         "showIf": {"preview_question": true},
         "title": "Question ID",
         "description": "To see one of your own questions, enter it's ID in the text box below. The question ID can be found in the URL of the question from your Ramen account. <code class=\"inline\">https://ramen.is/organizations/:org_id/manage/questions/:question_id/edit</code>. Take the <code class=\"inline\">question_id</code> portion and paste it below.",
@@ -54,7 +70,7 @@
       },
 
       "simulate_user": {
-        "order": 7,
+        "order": 9,
         "showIf": {"preview_question": true},
         "title": "Simulate User",
         "description": "If you want to simulate a new or existing user, check this box.",
@@ -63,38 +79,38 @@
       },
 
       "user_id": {
-        "order": 8,
+        "order": 10,
         "showIf": {"preview_question": true, "simulate_user": true},
         "title": "Simulated User ID",
         "type": "string"
       },
 
       "user_name": {
-        "order": 9,
+        "order": 11,
         "showIf": {"preview_question": true, "simulate_user": true},
         "title": "Simulated User Name",
         "type": "string"
       },
 
       "user_email": {
-        "order": 10,
+        "order": 12,
         "showIf": {"preview_question": true, "simulate_user": true},
         "title": "Simulated User Email",
         "type": "string"
       },
 
       "timestamp": {
-        "order": 11,
+        "order": 13,
         "showIf": {"preview_question": true, "simulate_user": true},
         "title": "Secure Mode timestamp",
-        "description": "This is set automatically when you click on 'Preview Question' from inside Ramen. It is not required unless your Ramen Organization is already in Secure Mode.",
+        "description": "This is set automatically when you click on a preview button from inside Ramen. It is not required unless your Ramen Organization is already in Secure Mode.",
         "type": "integer"
       },
 
       "auth_hash": {
-        "order": 12,
+        "order": 14,
         "showIf": {"preview_question": true, "simulate_user": true},
-        "description": "This is set automatically when you click on 'Preview Question' from inside Ramen. It is not required unless your Ramen Organization is already in Secure Mode.",
+        "description": "This is set automatically when you click on a preview button from inside Ramen. It is not required unless your Ramen Organization is already in Secure Mode.",
         "title": "Secure Mode auth_hash",
         "type": "string"
       }

@@ -8,6 +8,10 @@
   window.ramenSettings = window.ramenSettings || {};
   window.ramenSettings.eager_options = options;
   window.ramenSettings.organization_id = options.organization_id;
+ 
+  if (options.custom_bug_image && options.bug_image_url) {
+    window.ramenSettings.bug_image_url = options.bug_image_url;
+  }
 
   if (isPreview) {
     if (!options.preview_question) {
