@@ -52,6 +52,8 @@
     window.ramenSettings.user = preview_user;
 
   } else {
+    var user = null;
+    
     if (options.automaticUser) {
       var emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
