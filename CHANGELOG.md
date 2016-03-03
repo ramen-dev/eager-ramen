@@ -1,5 +1,8 @@
 # Eager Ramen Changelog
 
+## v1.2.1 March 3, 2016
+Fix a leaky `user` variable
+
 ## v1.2.0 Dec 20, 2015
 Add ability to customize the 'Bug' image
 
